@@ -7642,6 +7642,7 @@ function draw() {
 	_pxmouse = _xmouse;
 	_pymouse = _ymouse;
 	pmenuScreen = menuScreen;
+	document.getElementById("frame").innerHTML = levelTimer
 }
 
 // Limits the framerate to 60fps.
@@ -7674,7 +7675,3 @@ function rAF60fps() {
 	lastFrameReq = now;
 }
 
-setInterval(function(){ 
-    document.getElementById("frame").innerHTML = levelTimer
-
-}, interval);
