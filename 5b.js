@@ -7673,3 +7673,8 @@ function rAF60fps() {
 	if (lastFrameReq - then > interval) then = now;
 	lastFrameReq = now;
 }
+
+setInterval(function(){ 
+    document.getElementById("Frame").innerHTML = levelTimer
+
+}, interval);
