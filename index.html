@@ -15,7 +15,8 @@
 	<p id="bottomtext">An HTML5 port of Cary Huang's <a href="http://bfdi.tv/5b/">BFDIA 5b</a>.</p>
 	<p id="bottomtext">Press [h] to toggle hitboxes.</p>
 	<input name="fps" onChange="setfps(this.value);" type="number"/> <button onclick="draw()"> 1 frame forward </button>
-	<p id="frame"></p>
+	<p id="frame"></p> <button onclick="document.getElementById("frame").innerHTML = levelTimer"> update frame count, if you're moving forward frame by frame </button>
+	
 </div>
 </body>
 </html>
