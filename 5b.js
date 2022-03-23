@@ -6134,40 +6134,42 @@ function setup() {
 
 function draw() {
 	document.getElementById("frame").innerHTML = levelTimer
-	if (tasKeys[currentLevel][levelTimer].includes(13)) {
-		document.getElementById("key13").innerHTML = "<b>enter</b>"
-	} else {
-		document.getElementById("key13").innerHTML = "enter"
-	}
-	if (tasKeys[currentLevel][levelTimer].includes(38)) {
-		document.getElementById("key38").innerHTML = "<b>up</b>"
-	} else {
-		document.getElementById("key38").innerHTML = "up"
-	}	
-	if (tasKeys[currentLevel][levelTimer].includes(40)) {
-		document.getElementById("key40").innerHTML = "<b>down</b>"
-	} else {
-		document.getElementById("key40").innerHTML = "down"
-	}
-	if (tasKeys[currentLevel][levelTimer].includes(37)) {
-		document.getElementById("key37").innerHTML = "<b>left</b>"
-	} else {
-		document.getElementById("key37").innerHTML = "left"
-	}
-	if (tasKeys[currentLevel][levelTimer].includes(39)) {
-		document.getElementById("key39").innerHTML = "<b>right</b>"
-	} else {
-		document.getElementById("key39").innerHTML = "right"
-	}	
-	if (tasKeys[currentLevel][levelTimer].includes(32)) {
-		document.getElementById("key32").innerHTML = "<b>jump</b>"
-	} else {
-		document.getElementById("key32").innerHTML = "jump"
-	}
-	if (tasKeys[currentLevel][levelTimer].includes(90)) {
-		document.getElementById("key90").innerHTML = "<b>swap</b>"
-	} else {
-		document.getElementById("key90").innerHTML = "swap"
+	if (currentLevel >= 0 && currentLevel < tasKeys.length && levelTimer > 0 && levelTimer < tasKeys[currentLevel].length ) {
+		if (tasKeys[currentLevel][levelTimer].includes(13)) {
+			document.getElementById("key13").innerHTML = "<b>enter</b>"
+		} else {
+			document.getElementById("key13").innerHTML = "enter"
+		}
+		if (tasKeys[currentLevel][levelTimer].includes(38)) {
+			document.getElementById("key38").innerHTML = "<b>up</b>"
+		} else {
+			document.getElementById("key38").innerHTML = "up"
+		}	
+		if (tasKeys[currentLevel][levelTimer].includes(40)) {
+			document.getElementById("key40").innerHTML = "<b>down</b>"
+		} else {
+			document.getElementById("key40").innerHTML = "down"
+		}
+		if (tasKeys[currentLevel][levelTimer].includes(37)) {
+			document.getElementById("key37").innerHTML = "<b>left</b>"
+		} else {
+			document.getElementById("key37").innerHTML = "left"
+		}
+		if (tasKeys[currentLevel][levelTimer].includes(39)) {
+			document.getElementById("key39").innerHTML = "<b>right</b>"
+		} else {
+			document.getElementById("key39").innerHTML = "right"
+		}	
+		if (tasKeys[currentLevel][levelTimer].includes(32)) {
+			document.getElementById("key32").innerHTML = "<b>jump</b>"
+		} else {
+			document.getElementById("key32").innerHTML = "jump"
+		}
+		if (tasKeys[currentLevel][levelTimer].includes(90)) {
+			document.getElementById("key90").innerHTML = "<b>swap</b>"
+		} else {
+			document.getElementById("key90").innerHTML = "swap"
+		}
 	}
 	onButton = false;
 	hoverText = '';
