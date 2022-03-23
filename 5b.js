@@ -7675,6 +7675,6 @@ function rAF60fps() {
 }
 
 setInterval(function(){ 
-    document.getElementById("Frame").innerHTML = levelTimer
+    document.getElementById("frame").innerHTML = levelTimer
 
 }, interval);
