@@ -2369,7 +2369,7 @@ function testLevelCreator() {
 			}
 		}
 		playMode = 2;
-		currentLevel = 10000;
+		currentLevel = 53;
 		editingTextBox = -1;
 		wipeTimer = 30;
 		// bg.cacheAsBitmap = true;
@@ -2805,7 +2805,8 @@ function playLevel(i) {
 	wipeTimer = 30;
 	// bg.cacheAsBitmap = true;
 	menuScreen = 3;
-	toSeeCS = true;
+	// toSeeCS = true;
+	toSeeCS = currentLevel == 0;
 	transitionType = 1;
 	resetLevel();
 }
