@@ -2805,8 +2805,7 @@ function playLevel(i) {
 	wipeTimer = 30;
 	// bg.cacheAsBitmap = true;
 	menuScreen = 3;
-	// toSeeCS = true;
-	toSeeCS = currentLevel == 0;
+	toSeeCS = true;
 	transitionType = 1;
 	resetLevel();
 }
@@ -6839,7 +6838,8 @@ function draw() {
 				}
 				if (playMode == 0 && currentLevel < 99) {
 					currentLevel++;
-					toSeeCS = true; // this line was absent in the original source, but without it dialog doesn't play after level 1 when on a normal playthrough.
+					// toSeeCS = true; // this line was absent in the original source, but without it dialog doesn't play after level 1 when on a normal playthrough.
+					toSeeCS = currentLevel == 0;
 					levelProgress = currentLevel;
 					resetLevel();
 				} else {
