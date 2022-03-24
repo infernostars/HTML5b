@@ -34,7 +34,7 @@
 	<p id="bottomtext">Press [h] to toggle hitboxes.</p>
 	<p> <input id="fps" onChange="setfps(this.value);" type="number"/> <button onclick="draw()"> 1 frame forward </button> </p>
 	<p id="frame"></p> 
-	<p> <input id="levelnmr" type="number"/> <input id="levelstr" type="string"/> <button onclick='tasString[document.getElementById("levelnmr").value - 1] = document.getElementById("levelstr"); parseTASString();'> Change String </button> </p>
+	<p> <input id="levelnmr" type="number"/> <input id="levelstr" type="string"/> <button onclick='tasString[document.getElementById("levelnmr").value - 1] = document.getElementById("levelstr").value; parseTASString();'> Change String </button> </p>
 	<p> <input id="levelnmr2" type="number"/> <button onclick='document.getElementById("stringset").innerHTML = tasString[document.getElementById("levelnmr2").value - 1];'> Get String </button> - <span id="stringset">No string currently</span></p>
 </div>
 </body>
