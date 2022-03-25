@@ -6,29 +6,42 @@
 	<meta charset="utf-8"/>
 	<!--<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />-->
 	<link rel="stylesheet" href="style.css" type="text/css"/>
+	<style type="text/css">
+		.keyUp {
+			background-color: lightblue;
+			color: white;
+			width: 20px;
+		}
+		.keyDown {
+			background-color: darkblue;
+			color: white;
+			width: 20px;
+		}
+	</style>
 	<script type="text/javascript" src="Character.js"></script>
 	<script type="text/javascript" src="5b.js"></script>
 </head>
 <body>
 <div id="center">
-		<canvas width="960" height="540" id="cnv" contenteditable="false"></canvas>
-	<table style="width:5%">
-<tr>
-    <td></td>
-  <td id="key38">up</td>
-  <td></td>
-</tr>
-<tr>
-  <td id="key37">left</td>
-  <td id="key40">down</td>
-  <td id="key39">right</td>
-</tr>
-<tr>
-  <td id="key90">swap</td>
-  <td id="key32">jump</td>
-  <td id="key13">enter</td>
-</tr>
-</table>
+	<canvas width="960" height="540" id="cnv" contenteditable="false"></canvas>
+	<table style="width:120px">
+		<tr>
+			<td></td>
+			<td id="key38" class="keyUp">↑</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td id="key37" class="keyUp">←</td>
+			<td id="key40" class="keyUp">↓</td>
+			<td id="key39" class="keyUp">→</td>
+		</tr>
+		<tr>
+			<td id="key90" class="keyUp">z</td>
+			<td id="key32" class="keyUp">␣</td>
+			<td id="key13" class="keyUp">↩︎</td>
+		</tr>
+	</table>
+	<div style="width: 100%;"><button id="record button" style="position: absolute; right: 10%; top: 565px;" onclick="beginKeyRecord();">record</button></div>
 
 	<p id="bottomtext">An HTML5 port of Cary Huang's <a href="http://bfdi.tv/5b/">BFDIA 5b</a>.</p>
 	<p id="bottomtext">Press [h] to toggle hitboxes.</p>
