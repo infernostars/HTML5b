@@ -19,7 +19,6 @@ const requestAnimationFrame =
 	window.msRequestAnimationFrame;
 
 // offscreen canvases
-<<<<<<< HEAD
 let osc1, osctx1;
 let osc2, osctx2;
 let osc3, osctx3;
@@ -216,147 +215,6 @@ let tasString = [
 ];
 
 let tasKeys;
-=======
-var osc1, osctx1;
-var osc2, osctx2;
-var osc3, osctx3;
-var osc4, osctx4;
-
-var _xmouse = 0;
-var _ymouse = 0;
-var _pxmouse = 0;
-var _pymouse = 0;
-var lastClickX = 0;
-var lastClickY = 0;
-var valueAtClick = 0;
-var _cursor = 'default';
-var hoverText = '';
-const _keysDown = new Array(222).fill(false);
-var _frameCount = 0;
-var qTimer = 0;
-var inputText = '';
-var controlOrCommandPress = false;
-
-var showingHitboxes = false;
-
-var tassing = true;
-var recordEnabled = false;
-var keyRecording = '';
-var tasString = [
-	// 001
-	'R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R E - E - E - E - E - E - R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
-	// 002
-	'- R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
-	// 003
-	'R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R - - - - - - - - - - - - - R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
-	// 004
-	'R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
-	// 005
-	'- R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R LJ L L L L L L L L L L L L L L L L L L L R R R R RJ R R R R R R R R R R R R R R R R R R R L L L L LJ L L L L L L L L L L L L L L L L L L R R R R R R RJ R R R R R R R R R R R R - - R R R R - - L L - L L L L L - LJ L L L L L L L L L L L L L L L L L L LU R R R R R R R R R R R R R R R R R R R R R L - - - - - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RU R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R LU R R R R R R R R R R R R R R RD R R R R R R R R R R R R R R R R RU R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R - - - - - - - - - - - - - - L L L L L L L LJU L L L L L L L L L L L L L L LU L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L R R R R R R R R R RJU R R R R R R R R R R R R R R R R R R R R R RU R RJU R R R R R R R R R R R R R R R R RU R L L L L L L L L L LJU L L L L L L L L L L L L L L L L LU L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L - - - - L L L L L L L L L L L L L L L L L L L L L L L L L L LU L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L - - LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L -',
-	// 006
-	'- - - - - J - - - - - - - - - - - - - - - - - - - - - - - - - - - - - J - - - - - - - - - - - - - - - - - - - - - - - - - - - - - J - - - - - - - - - - - - - - - - - - - - - - - - - - - - - J  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - J - - - - - - - - - - - - - - - - - - - - - - JR JR JR JR JR JR JR JR JR JR R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R U L L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU L L LU R R R R R R R R R R R R R R RD LU R R R R R R R R R R R R R R R R R R R R R RU R R R R R R J R R R R R R R R R R RU - - - - - - - - - R R RU RJ R R R R R R R R R R R R R R R R LU R R R R RU R R R LU R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RU R R R R R R R R R R RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ R R R R RJ RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
-	// 007
-	'R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L JR R R R R R R R R R R R R R - - - - L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L - - - - - - - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R - R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
-	// 008
-	'L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L - - - RJ R R R R R R R R R R - - - - - - - - - - - - L LJ L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R - R R R R R R - - - - - R R - - - - - - - - - - - RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R - - - - - - J - - - - R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RU R R R R R L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L LU R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
-	// 009
-	'R R R R R R R R R R R R R R R R RU R R R RU R R R R RJ R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R R R R R L L L L L L L L L L LU L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R RJ R R R R R RU R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ L L L L L L L L L L L L L L L L L L L L L L L L L - - - - - - - - - - - - - - - - - - - - - - - RUJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L LU L L L L L L L L L LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ RJ RJ RJ RJ RJ RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
-	// 010
-	'R R R R R R R R R R R RU R R RU RJ R R R R R R R R R R R R R R R R RU R R R R R R R R R R R R R R R R R R R R R R R R R RUJ R R R R R R R R R R R R R R RU R R R R R R R R R R R R R R R R R R R R R R RU R R R R RJ R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ L L L - - - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
-	// 011
-	'R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ R R R R J - - - R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
-	// 012
-	'R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
-	// 013
-	'R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R - - - - - - J - - - - - - - - - - - - - - - - - - - - - - - - - - - - - J - - - - - - - - - - - - - - - - - - - - - - - - - - - - - J R R R R R R R R R R R R R R R RU R L L L L LD L L L L L L L L L L L R R RJ R R R R R R R R R R R R R R RU R R R R R R R R R R U L L L L L L L L L L LU R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R RU R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
-	// 014
-	'R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R - - - - - - - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R - - - - - - - - - - - - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R - - - - - - - - - - - - - - - - - - - - - R R R R R R R R - - - - - - - - - - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R - - - - - L LJ L L L L L L L L L L L L L R R R R R R R R R R RJ R R R R R - - R R R R R R R R R R R R R R R R R R -',
-	// 015
-	'- - - - - - - - - R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R J J J J J J J J J J J J J J J J J J J J J J J J J J J J J J J J J J J J J J J J J J J J J L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ J J RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ R R R R R R R R R R R R R R R R R R R R R -',
-	// 016
-	'R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L - - - - L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L -',
-	// 017
-	'R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R LJ L L L L L L L L L L L L L L L L L L L L L L L L L L - - - - - - - - - - LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R L L L L L L L L L L L LJ L L L L L L L L L L L L - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R -',
-	// 018
-	'R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R - - - - - - - - - - - - - R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R - - - - - - - - - - - - - J - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R - - - - - - - - - - R R R RJ R R R R R R R R R R R R R R R R R R R R R R R - - - - - - J R R R R R R R R R R R R R R R R R R R R R R R - - - - - - - - - - - - - J - - R R R R R R R R R R R R R R R R R R R R R R R R R - - - - - - - R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
-	// 019
-	'- R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L LJ L L L L L L L L L L L L L L L L L L L L L - - - J - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R RU R RU R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R RJ R R R R R R R R R R R RU RJ R R R R R R R R R R R R R R R R R R R R RD R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R RZ L L L L L L L L L L L L LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ J LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU -',
-	// 020
-	'L L L L L L L L L L L L L L L L L L L L L L L L L L L LZ R R R R R R R R R R R R RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU Z U - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - R J - - - - - - - LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU R RU RZ RU RZ RU RZ RU RZ R R R R R R R R R R R RZ RU R R R R R R R R R R R RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R R R R R R R R R R R R R R R R R RZ RU R R R R R R R R R R R R R R R RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU R R R R R R R R -',
-	// 021
-	'R RZ R R R R R R R RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU - - - - - - - - - - - - - - - - - - - - RZ RU RZ RU RZ RU RZ RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R R R R R R RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU -',
-	// 022
-	'- Z L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L - - - - - - - - - - - - - - - J - Z JR JR JR JR JR JR JR JR JR JR JR JR JR JR JR JR JR JR JR JR JR JR JR JZ J R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L Z R R R R R R R R R R R R R Z L L L L L L - - - - - - - - - - - - U R R R RU L L L L L L L L - - - - - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RU R R R R R R R R R R R R R R R R U L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L - - - - - - - - - - - - - - - J - Z JR JR JR JR JR JR JR JR JR JR JR JR JR JR JR JR JR JR JR JR JR JR JR JZ J R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - U R R R R R R R R R R R R R R R R R R R RU R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L Z - - - - - - - - - - U R RU RZ U -',
-	// 023
-	'- Z R R R R RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R R R R RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU -',
-	// 024
-	'- Z R R R R RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R R R R RZ RU RZ RU RZ RU RZ RU RZ RU -',
-	// 025
-	'- Z R R R R R RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU R R R R RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU -',
-	// 026
-	'- L L L LU R R R R R R RU R R R R R R R R R R R RU R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RU Z U R R R R R R R R R R R R R R R R R R R R R D - - - - - D U - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - U R R R R R R R R R R R R R R R R R R R RU Z L L L L L L L L L - - R R R R R R R R R R R R R R R R R R R LD U - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU -',
-	// 027
-	'- L L L L L LU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU R RU R RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU - - - - - - - - - - - RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU RZ RU RZ RU - - - - - - - - - - RZ RU R RU LZ LU L L -',
-	// 028
-	'- Z R R R R R R Z U - U Z U - U Z U L U Z U - U Z U - U Z U - U Z U - U LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU -',
-	// 029
-	'- L L L LU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L L L L LZ LU LZ LU LZ RU -',
-	// 030
-	'- L L L LU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R R R R RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU LZ LU -',
-	// 031
-	'- Z R R R R R R RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R R R RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU R RU RZ RU R RU L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R RU RJ RD R R R R R R R RJ R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ RU R RU RZ RU R RU RZ RU RZ RU RZ RU RZ RU RZ RU R R R R RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU -',
-	// 032
-	'- Z R R R R R R R R R R R R R R R RU RZ RU R LU LZ U - U Z U - LU LZ U - LU LZ U - LU LZ U - UR RZ U - LU LZ U - UR RZ U - LU LZ - - - - - - - R U Z U L U Z RU - U -',
-	// 033
-	'- Z R R R R R R R R R R R RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU R RU RZ RU R RU RZ RU R RU - - - - - - - - - - - - - - - - - - - - - Z L L L - - - - - - Z UR R RD R R R R R R R R R R R R R R R R R R R R R R R R R R R R RZ R R R R R R R R R R R R R R R R R R R R RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R R R R RZ RU RZ RU RZ RU R R R R -',
-	// 034
-	'- Z U J Z U Z U Z U Z U Z U Z U Z U Z U Z U Z RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU R RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU R - - R RJ R RD R R R R R R R R R R R - - - - - - - - - - - - - - - - - - - L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L D U - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Z R R R R R R R R R R R R R RU R RU RZ RU R RU RZ RU R RU RZ RU R R R R RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU -',
-	// 035
-	'- Z RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ R R R R R R R R R R R R R R R R R R R R R L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R R R R R R R R R R R R R R R Z R R R R R R R R R R R R R R R R R R R Z L L L J - R R R R R R R R R R R R R R R R R R R R RZ R R R R R R R R R R R - - - - - - - - J U - - - - RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU R R R R RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU RZ RU R R RZ R R R R R RZ J R R R R R R R R R R R R R R R R R R R R R R R R R R RZ R R R R R R RU RZ RU RZ RU RZ RU Z U - U Z U - U Z U - U Z U - U Z U - U Z U - U Z UL - U Z U - U Z U L LU L LU -',
-	// 036
-	'- R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L - - - - - - - - - - - - - RJ R R R R R R R R R R R R R R R R R R R R R - - - - - - R R R R R R R R R R R R R R R R R R R L - - - - - - L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R RJ R R R R R R R R R R R - - - - - - - - - - - - - - - - - - - - - - RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ - - J - R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L LZ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L L L L L L L L L L L L L L L L L L L L L LU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L - - - - - - - - - - - - - - L L L L L L L L L L L L L L L L L L L L L L L L L L L L - - - - - - - - - - - - - - - - J - L L L L L L L L L L L L L L L L L L L L L L L - - - - - - - - - - - - - J - L L L L L L L L L L L L L L L L L L L L L L L - - - - - - - - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ LJ R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L LZ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L L L L L L L L L L L L L L L L L L L L L LU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU R RU L L L L L L L L L L L L L L - - - - - - - - L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L U R R R R R R R R R R R R R RU L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L - - - - - - - D U - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - RU R R R R R R R R R R R R R R R R R RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ RZ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
-	// 037
-	'- - - - - - - - - - - - - - - Z U J U Z U - U Z U - U Z U - U Z U - U Z U - U Z U - U Z RU R RU RZ RU R RU RZ RU R RU RZ U - U Z U - U L L L L L L L L L L LZ R R R L L LZ R R R R R R R R R R R R R RZ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R R R R R R R R R R R R R R JR RZ R R R R R R R R RZ R R R R R R R R R JR RZ R R R R R R R R RZ R R R R R R R R R JR RZ R R R R R R R R RZ R R R R R R R R R R R R R R R R L L L LZ R R R R R R R R R R R R R R R R RZ L L L L L L L LZ R R R R R R R R R R R R R R R R R RZ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R R R R R R R R R R R R R R JR RZ R R R R R R R R RZ R R R R R R R R R JR RZ R R R R R R R R RZ R R R R R R R R R JR RZ R R R R R R R R RZ R R R R R R R R R R R R R R R R L L L LZ R R R R R R R R R R R R R R R R RZ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R R R R R R R R R R R R R R JR RZ R R R R R R R R RZ R R R R R R R R R JR RZ R R R R R R R R RZ R R R R R R R R R JR RZ R R R R R R R R RZ R R R R R R R R R R R R R R R R L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R RZ RU R RU RZ RU R  -',
-	// 038
-	'- LU - U Z U - U Z U - U Z U - U Z U - U Z U - U Z U - U Z RU - U Z U - D Z U -',
-	// 039
-	'- RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R R R R RZ RU RZ RU RZ RU RZ RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R R R R R R R R RZ RU RZ RU RZ RU RZ RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU R RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU RZ RU -',
-	// 040
-	'- RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L LU LZ LU L L L L L L -',
-	// 041
-	'- RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU LZ LU L LU LZ LU L LU LZ RU -',
-	// 042
-	'- Z R R R R R R R R R R R R R R R RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU R RU RZ RU - - - - - - - - - - RZ L L LZ RU RZ RU RZ L L LZ RU RZ RU RZ L LZ RU RZ RU RZ L L LZ RU RZ RU RZ L LZ R R R R R R R R R R R R RU L L LU LJ LZ J - - LU - RU R R R RU - LU R R Z L LZ L L L LU L LU R RU R RU RZ LU - U R R RZ R RZ L LU - U R RU R RU RZ LU L LU R R RZ R RZ L LU R R RU R RU R RU RZ RU R RU RZ R R R RZ RU R R -',
-	// 043
-	// '- U - U - - - U LJ L LU R RU R R LU L LU LZ LU L LU LZ LJ LZ LU L LU LZ LU L LU LZ LJ LZ LU L LU LZ LU L LU LZ LJ LZ LU L LU - - - - - - - - - - - U - U - - - Z U R U Z L Z U - U Z U - U Z L Z U - U Z U L U Z L Z U - U Z U R RU RZ R RZ RU -',
-	'- U L LU LJ U Z LJ L U - U R U - U Z R Z RU R RU L U - U R RZ L LU L LU RZ R R R RZ L LU R RU L RU L L LU R RZ RU R RU L L LZ R R RZ RU L RU L LU - U Z U - U Z L LZ R RZ R RZ L L L L L L L L L L L L LZ R RZ R RU L L L L L -',
-	// 044
-	// '- Z UR R R R UR R R R UR R R R UR R R R UR R R R UR R R R UR R R R UR R R R UR R R R UR R R R UR R R R UR R R R UR R R R R R R R R R R R R R R RU R R R R R R RJ R R R R R - - - - - - - - - - - - - - R R R R R RJ R R R R R R R R R R R RU L L L L L L - - - - - - - - - - - - - - - - - Z R RZ RU RZ RU RZ JR RZ RU RZ RU RZ JR RZ RU RZ RU RZ JR RZ RU RZ RU RZ JR RZ RU RZ RU RZ JR RZ RU RZ RU RZ JR RZ RU RZ RU RZ JR RZ RU R RU RZ RU R RU RZ J RZ RU R RU RZ RU R RU RZ J RZ RU R RU RZ RU R RU RZ J RZ RU R RU RZ RU L LU LZ J LZ LU L LU Z R R R R R R Z - Z RJ U - U - - LU LZ LU R RU RZ JR RZ RU R RU RZ RU RZ RJ Z U R Z U L Z RJ R R R R R R R R R R R R R -',
-	'- Z UR R R R UR R R R UR R R R UR R R R UR R R R UR R R R UR R R R UR R R R UR R R R UR R R R UR R R R UR R R R UR R R R R R R R R R R R R R R RU R R R R R R RJ R R R R R - - - - - - - - - - - - - - R R R R R RJ R R R R R R R R R R R RU L L L L L L - - - - - - - - - - - - - - - - - Z R RZ RU RZ RU RZ JR RZ RU RZ RU RZ JR RZ RU RZ RU RZ JR RZ RU RZ RU RZ JR RZ RU RZ RU RZ JR RZ RU RZ RU RZ JR RZ RU R RU RZ RU R RU RZ JR RZ RU R RU RZ RU R RU RZ JR RZ RU R RU RZ U - U Z L - - - - - - - LJ Z ZL L - U - U L L L L L L L RJ U - U L L RU R RU L L RZ R R R R RU RZ R RZ RU R RU RZ RU RZ R R R -',
-	// 045
-	// '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Z R R R R R R R R R R RU Z R Z RU Z RU Z R Z RU Z RU Z R Z RU Z RU Z R Z RU R RU Z RU R RU Z R Z RU R RU Z RU R RU Z R Z RU R RU Z RU R RU Z R Z RU R RU Z RU R RU Z R Z RU R RU Z RU R RU Z R Z RU Z RU Z R Z RU Z RU Z R Z RU Z RU Z R Z RU Z RU Z R Z RU Z RU Z R Z RU Z RU Z R Z RU Z RU Z - - - - - - - R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
-	'- - - - - - - - - - R ZR R R R R R R R R R R R R R R R R R R R ZR R R R R R R R R R R R ZR R ZR R ZR R ZR R R R R R R R R R R - - - - - U R RU L LU R RU RZ LU R RU R RZ L L LZ RU R RU L LU R RU RZ RU R RU L LZ L LZ RU R RU L LU R RU RZ LU R RU L LZ L L LZ R RU R RU L LU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU RZ RU RZ R R R R RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ RJ RZ RU RZ RU RZ RJ RZ RU RZ RU R LU R RZ R R R R R R R R R R R R R R R R R R R R R R R R RZ LU R R -',
-	// 046
-	'- U L LU LJ U Z LJ L U - U R U - U Z R Z RU R RU L U - U R RZ L LU L LU RZ R R R RZ L LU R RU L RU L L LU R RZ RU R RU L L LZ R R RZ RU R RU L LU R RU RZ RU R RU L LZ L L LZ RU R RU L LU R RU RZ RU R RU LZ L L LZ RU R RU L LU R RU RZ RU R RU L LZ L L LZ RU R RU L LU R RU RZ RU R RU LZ L L LZ RU R RU L LU R RU RZ RU R RU L LZ L L LZ RU R RU L LU R RU RZ RU R RU LZ R R R RZ L LU R RU RZ RU - - - - RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ R R R R R R R R RZ RU -',
-	// 047
-	'- U - U L L L LU R R R R R R RU R R R RU R RU R R R R R R RU R R R R R R R RD R R R R R R R R R R R R R R R R R R R R R R R R R Z R R R R RU R RU R RU R RU RZ R RZ U - U L L LU R RU RZ RU R RU R LZ L L LZ R R R - - LU - RU - - - - - - LU J LU - Z L L LZ R R RZ LU L LU R R RU R RU RZ LU L LU LZ L RZ RU R RU L L LU L LU RZ LU L LU R R LZ R RZ L LU R R RU R RU L LU RZ RU R RU L LZ L L LZ RU R RU L LU R RU RZ RU R RU L LZ L L LZ RU R RU L LU R RU RZ RU R RU L LZ L L LZ RU R RU L LU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ RJ RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ RJ RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU RZ R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R RZ R R R R R R R R R R R R RU R RU L LU R RU RZ RU R RU L LZ L L LZ RU R RU L LU R RU RZ RU R RU L LZ L L LZ RU R RU L LU R RU RZ RU R RU L LZ L L LZ RU R RU L LU R RU RZ RU R RU L RZ R R RZ RU R RU RZ RU RZ RJ RZ RU RZ RU R RU RZ RJ RZ RU R RU RZ RU RZ RJ R R RZ RU RD RZ RU RD RZ R RZ R R R R R RU R U L L L L UJ R RU RZ L L L L L L L L R R RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU L LU L -',
-	// 048
-	'- - - J - - - - U D U - - - U - - - - - - - - - - Z LU -',
-	// 049
-	'- RU R R R R R R R R R R RJ R R R RU L LU R RU RZ RU R RU R LZ L L LZ RU R RU L LU R RU RZ RU R RU L LZ L L LZ RU R RU L LU R RU RZ RU R RU R LZ L L LZ RU R RU L LU R RU RZ RU R RU L LZ L L LZ RU R RU L LU R RU RZ RU R RU R LZ L L LZ RU R RU L LU R RU RZ RU R RU L LZ L L LZ RU R RU L LU R RU RZ RU R RU R LZ L L LZ RU R RU L LU R RU RZ RU R RU L LZ L L LZ RU R RU L LU R RU RZ RU R RU R LZ L L LZ RU R RU L LU R RU RZ RU R RU L LZ L L LZ RU R RU L LU R RU RZ RU R RU R LZ L L LZ RU R RU L LU R RU RZ RU R RU R LZ L L LZ RU R RU L LU R RU - - - RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU -',
-	// 050
-	'- U - U L L U R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R - - - - - - - - R R R R R R R R R R R R R RU RJ R R R R R R R R R R RU R R R R R R R R R RU L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L Z - Z - J - - - - R R R R R R R R R Z - Z RU R RU RZ - Z RU R RU RZ RU R RU RZ - Z RU R RU RZ RU R RU RZ - Z RU R RU RZ RU - - - - - RZ - Z RU RZ RU RZ - Z RU RZ RU RZ - Z RU RZ RU RZ - Z RU RZ RU RZ - Z RU RZ RU RZ - Z RU RZ RU RZ - Z RU Z - Z - - - - - - - - - - - - RJ R R R R R R R R R R R R R R R R R R RZ RU R RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU R R R R R -',
-	// 051
-	'- Z - Z R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU RZ R - - - - RZ RU RZ RU R RZ R RZ RU RZ RU R RZ R RZ RU RZ RU R RZ - RZ RU RZ RU R RZ - RZ RU RZ RU R RZ - RZ RU RZ RU R RZ - RZ RU RZ RU R RZ - RZ RU RZ RU R RZ -',
-	// '- Z L L L LU R R R R R R R R RJ RU L LU R RU L LZ L LZ R RU R RU L LU R RU RZ LU R RU L LZ L L LZ RU R RU L LU R RU -',
-	// 052
-	// '- U - U L L L L L L L L L L L L L L L L LU R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R RU L L L L L L L L L L L L L L L L L L L L L L LU RJ RZ RU R RU RZ - Z RU R RU RZ RU RZ - Z RU RZ RU RZ - Z RU RZ RU RZ - Z RU RZ RU RZ - Z RU RZ RU RZ - Z RU RZ RU R RU L RU - J U - - - - - - - - U - - - - - - U Z - - - R R R R R R R R R R R RJ - - - - - - - - - - - - - - - - - - - RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RZ L LZ R R R R R R R R R R R R R R R R R R R R R R R R R R R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ RJ RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ RU R RU RZ R RZ RU R RU RZ R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R RU R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LZ L L L L R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RZ - - - - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RU R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R D R R R - - - - - - - R R R R R R R R R R R RU R R R R R R R R R R R -'
-	'- Z L LU R R R R R R RU Z - Z R R R R R J - - - - - - RU R RU L L Z J Z L LZ U R RU RZ LU R RU LZ L LZ RU R RU L LU R RU RZ RU R RU L LZ L L LZ RU R RU L LU R RU RZ RU R RU R RZ R R RZ RU RZ RU RZ R RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RJ RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU RZ RU RZ R RZ RU R RU RZ RU R RU RZ RJ RZ RU R RU RZ RU R RU RZ RJ RZ RU R RU RZ RU R RU RZ RJ RZ RU R RU RZ RU R RU RZ RJ RZ RU R RU RZ RU R RU RZ RJ RZ RU R RU RZ RU R RU RZ RJ RZ RU R RU RZ RU R RU RZ RJ RZ RU R RU RZ RU R RU RZ RJ RZ RU R RU RZ RU R RU RZ RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R L L LJ R R R R R R R R R R R R R R R R R R R - - - - - - - - - - - - - - - - - - - - - - - - - - R R R R R R RZ - Z LU J RU R R R R R RU R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LZ L L R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RZ RU R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R D R R R R R R R R R R R R R R R R R RU R R R R R R R R R R R -',
-	'',
-	''
-];
-var tasKeys;
->>>>>>> 905596fb6f7cbbb696fc6c673d4b7e0e8ba96efa
 
 function tasKeysToString() {
 	for (var i = 0; i < tasKeys.length; i++) {
@@ -393,11 +251,7 @@ function tasKeysToString() {
 			if (j < tasKeys[i].length - 1) tasString[i] += ' ';
 		}
 	}
-<<<<<<< HEAD
 	console.log("'" + tasString.join("',\n'") + "'");
-=======
-	console.log('\'' + tasString.join('\',\n\'') + '\'');
->>>>>>> 905596fb6f7cbbb696fc6c673d4b7e0e8ba96efa
 }
 
 function parseTASString() {
@@ -438,7 +292,6 @@ function parseTASString() {
 	}
 }
 
-<<<<<<< HEAD
 let defaultLevelsString = '';
 let levelsString = '';
 let levelCount = 133;
@@ -480,45 +333,6 @@ let longMode = false;
 let quirksMode = true;
 let enableExperimentalFeatures = false;
 let levelAlreadySharedToExplore = false;
-=======
-var levelsString = '';
-var levelCount = 133;
-var f = 19;
-var levels = new Array(levelCount);
-var startLocations = new Array(levelCount);
-var locations = new Array(6);
-var bgs = new Array(levelCount);
-var levelStart = 0;
-var levelWidth = 0;
-var levelHeight = 0;
-var thisLevel = new Array(0);
-var tileFrames = new Array(0);
-var switchable = new Array(6);
-var charCount = 0;
-var charCount2 = 0;
-var playMode = 0;
-var lineCount = 0;
-var lineLength = 0;
-var dialogueChar = new Array(levelCount);
-var dialogueText = new Array(levelCount);
-var dialogueFace = new Array(levelCount);
-var cLevelDialogueChar = new Array(levelCount);
-var cLevelDialogueText = new Array(levelCount);
-var cLevelDialogueFace = new Array(levelCount);
-var levelName = new Array(levelCount);
-var mdao = new Array(levelCount);
-var mdao2 = 0;
-var levelProgress;
-var bonusProgress;
-var bonusesCleared;
-var gotCoin;
-var gotThisCoin = false;
-var bfdia5b = window.localStorage;
-var deathCount;
-var timer;
-var coins;
-var longMode = false;
->>>>>>> 905596fb6f7cbbb696fc6c673d4b7e0e8ba96efa
 
 function clearVars() {
 	deathCount = timer = coins = bonusProgress = levelProgress = 0;
@@ -6423,7 +6237,6 @@ const charStateNames = [
 	'Playable Character'
 ];
 const charStateNamesShort = ['', 'D', 'BR', 'D&M', 'M', 'D', 'C', '', 'NPC', 'R', 'P'];
-<<<<<<< HEAD
 const toolNames = [
 	'Draw Tool',
 	'Eraser Tool',
@@ -6714,115 +6527,6 @@ let doorLightX = [
 ];
 let doorLightFade = [];
 let doorLightFadeDire = [];
-=======
-const toolNames = ['Draw Tool', 'Eraser Tool', 'Fill Rectangle Tool', 'Fill Tool', 'Eyedropper Tool', 'Selection Tool', 'Row Tool', 'Column Tool', '', 'Copy', 'Undo / Redo', 'Clear'];
-const tileNames = ['Air','Red Ground Block','Downward Facing Gray Spikes','Upward Facing Gray Spikes','Right Facing Gray Spikes','Left Facing Gray Spikes','End Gate','"E" Tree','Dialogue Starter','Red Background Block','Green Ground Block','Green Background Block','Win Token','Spring Block','Left Conveyer','Heater','Right Conveyer','Gray Spike Ball','Upward One-Way Platform','Downward Facing Black Spikes','Upward Facing Black Spikes','Right Facing Black Spikes','Left Facing Black Spikes','Downward Facing Black Spikes with Support Cable','Vertical Support Cable','Vertical Support Cable Connected Right','Horizontal Support Cable','Top Left Support Cable Connector','Horizontal Support Cable Connected Down','Horizontal Support Cable Connected Up','Vertical Support Cable Connected Left','Yellow Switch Block Solid','Dark Yellow Switch Block Solid','Yellow Switch Block Passable','Dark Yellow Switch Block Passable','Yellow Lever Facing Left','Yellow Lever Facing Right','Blue Lever Facing Left','Blue Lever Facing Right','Green Background Block with Upward One-Way Platform','Yellow Button','Blue Button','Gray Grass','Gray Dirt','Right Facing One-Way Platform','Two-Way Gray Spikes Top Left','Two-Way Gray Spikes Top Right','Crumbling Rock','Conglomerate-Like Background Block','Lamp','Gray Gems','Blue Switch Block Solid','Dark Blue Switch Block Solid','Blue Switch Block Passable','Dark Blue Switch Block Passable','Conglomerate-Like Background Block with Upward One-Way Platform','Gray Block','Green Lever Facing Left','Green Lever Facing Right','"V" Tree','Dark Green Switch Block Solid','Green Switch Block Passable','Dark Green Switch Block Passable','Green Switch Platform Up Solid','Green Switch Platform Up Passable','Green Switch Block Solid','Spotlight','Black Block','Left Facing One-Way Platform','Downward One-Way Platform','Green Background Block with Left Facing One-Way Platform','Green Button','Black Spike Ball','Purple Ground Block','"Wind Gust" Block','Vertical Electric Barrier','Horiontal Electric Barrier','Purple Background Block','Yellow Switch Spike Ball Passable','Yellow Switch Spike Ball Solid','"I" Tree','Yellow Switch Platform Up Solid','Yellow Switch Platform Up Passable','One-Way Conveyer Left','One-Way Conveyer Left (not moving)','One-Way Conveyer Right','One-Way Conveyer Right (not moving)','Purple Background Block Slanted Bottom Left','Purple Background Block Slanted Bottom Right','Light Gray Vertical Support Cable','Light Gray Horizontal Support Cable','Light Gray Horizontal Support Cable Connected Down','Light Gray Horizontal Support Cable Connected Up','Wood Block','Wood Background Block','Danger Zone Background Block','Purple Background Block Slanted Top Right','Purple Background Block Slanted Top Left','Gray Metal Ground Block','Wooden Background Block... again?','Acid','Acid Glow','Yellow Metal Ground Block','Lava','Lava Glow','Red Metal Ground Block','Yellow Metal Background Block','Dark Gray Metal Ground Block','Conveyer Lever Facing Left','Conveyer Lever Facing Right','Picture','','','','','','','','','','','','','','','','','','','','Water','Brick Ground Block','Wall of Text','Blue Switch Platform Up Solid','Blue Switch Platform Up Passable'];
-var charDropdown = -1;
-var charDropdownMS = -1;
-var charDropdownType;
-var diaDropdown = -1;
-var diaDropdownType;
-var lcPopUp = false;
-var lcPopUpType = 0;
-var tabHeight = 30;
-var tileTabScrollBar = 0;
-var charsTabScrollBar = 0;
-var diaTabScrollBar = 0;
-var bgsTabScrollBar = 0;
-var draggingScrollBar = false;
-var addButtonPressed = false;
-var duplicateChar = false;
-var reorderCharUp = false;
-var reorderCharDown = false;
-var reorderDiaUp = false;
-var reorderDiaDown = false;
-var levelLoadString = '';
-var lcMessageTimer = 0;
-var lcMessageText = '';
-var power = 1;
-var jumpPower = 11;
-var qPress = false;
-var upPress = false;
-var csPress = false;
-var downPress = false;
-var leftPress = false;
-var rightPress = false;
-var recover = false;
-var recover2 = 0;
-var recoverTimer = 0;
-var HPRC2 = 0;
-var cornerHangTimer = 0;
-var goal = 0;
-var charsAtEnd = 0;
-var qPressTimer = 0;
-var transitionType = 1;
-var char = new Array(1);
-var currentLevel = -1;
-var control = 0;
-var wipeTimer = 30;
-var cutScene = 0;
-var cutSceneLine = 0;
-var bubWidth = 500;
-var bubHeight = 100;
-var bubMargin = 40;
-var bubSc = 1;
-var bubX = 0;
-var bubY = 0;
-var charDepth = 0;
-var levelWidth = 0;
-var levelHeight = 0;
-var cameraX = 0;
-var cameraY = 0;
-var shakeX = 0;
-var shakeY = 0;
-var menuScreen = -1;
-var pmenuScreen = -1;
-var myLevel;
-var myLevelChars;
-var myLevelDialogue;
-var myLevelInfo;
-var myLevelNecessaryDeaths;
-var scale = 20;
-var tool = 0;
-var selectedTile = 0;
-var mouseIsDown = false;
-var pmouseIsDown = false;
-var LCEndGateX = 0;
-var LCEndGateY = 0;
-var LCCoinX = 0;
-var LCCoinY = 0;
-var cardinal = [[0,-1],[0,1],[-1,0],[1,0]];
-var diagonal = [[-1,-1],[1,-1],[1,1],[-1,1]];
-var diagonal2 = [[0,2],[0,3],[1,2],[1,3]];
-const direLetters = ['U','D','L','R'];
-var undid = false;
-var copied = false;
-var tileClipboard = [[]];
-var LCRect = [-1,-1,-1,-1];
-var levelTimer = 0;
-var levelTimer2 = 0;
-var bgXScale = 0;
-var bgYscale = 0;
-var stopX = 0;
-var stopY = 0;
-var toBounce = false;
-var toSeeCS = true;
-var csText = '';
-var currentLevelDisplayName = '';
-
-var tileShadows;
-var tileBorders;
-var HPRCBubbleFrame;
-var HPRCText = '';
-var HPRCCrankRot = 0;
-var hprcCrankPos = {x:-29.5,y:-23.7}
-var hprcBubbleAnimationTimer = 0;
-var charDepths = [];
-var tileDepths;
-var doorLightX = [[27.5],[15,40],[10,27.5,45],[10,21.75,33.25,45],[4,16.25,27.5,38.75,50],[4,14,23,32,41,50]];
-var doorLightFade = [];
-var doorLightFadeDire = [];
->>>>>>> 905596fb6f7cbbb696fc6c673d4b7e0e8ba96efa
 
 function toHMS(i) {
 	let h = Math.floor(i / 3600000);
@@ -7210,7 +6914,7 @@ function testLevelCreator() {
 			}
 		}
 		playMode = 2;
-		currentLevel = 53;
+		currentLevel = -1;
 		editingTextBox = -1;
 		wipeTimer = 30;
 		menuScreen = 3;
@@ -7302,7 +7006,6 @@ function drawLevelButton(text, x, y, id, color) {
 			levelButtonClicked = -1;
 			if (id <= levelProgress || (id > 99 && id < bonusProgress + 100)) {
 				playLevel(id);
-				if (tassing) levelTimer++;
 				white_alpha = 100;
 			}
 		}
@@ -7665,11 +7368,7 @@ function playLevel(i) {
 	currentLevel = i;
 	wipeTimer = 30;
 	menuScreen = 3;
-<<<<<<< HEAD
 	if (currentLevel == 0) toSeeCS = true; //!!!!!
-=======
-	toSeeCS = currentLevel == 0;
->>>>>>> 905596fb6f7cbbb696fc6c673d4b7e0e8ba96efa
 	transitionType = 1;
 	resetLevel();
 	levelTimer = 0; //!!!!!
@@ -8233,19 +7932,10 @@ function drawCharacters() {
 				char[i].poseTimer++;
 
 				// Hitboxes
-<<<<<<< HEAD
 				// ctx.strokeStyle = HSVtoRGB((char[i].id*1.618033988749894)%1, 0.7, 0.8);
 				// ctx.strokeStyle = '#ff0000';
 				// ctx.lineWidth = 1;
 				// ctx.strokeRect(char[i].x-char[i].w, char[i].y-char[i].h, char[i].w*2, char[i].h);
-=======
-				// ctx.strokeStyle = HSVtoRGB((char[_loc1_].id*1.618033988749894)%1, 0.7, 0.8);
-				if (showingHitboxes) {
-					ctx.strokeStyle = '#ff0000';
-					ctx.lineWidth = 1;
-					ctx.strokeRect(char[_loc1_].x-char[_loc1_].w, char[_loc1_].y-char[_loc1_].h, char[_loc1_].w*2, char[_loc1_].h);
-				}
->>>>>>> 905596fb6f7cbbb696fc6c673d4b7e0e8ba96efa
 				ctx.restore();
 				// if (showingHitboxes) {
 				// 	ctx.strokeStyle = '#ff0000';
@@ -11847,7 +11537,6 @@ function mouseup(event) {
 }
 
 function keydown(event) {
-<<<<<<< HEAD
 	_userKeysDown[event.keyCode || event.charCode] = true;
 	if (event.key == 'h') {
 		// showingHitboxes = !showingHitboxes;
@@ -11858,10 +11547,6 @@ function keydown(event) {
 		if (tassing && recordEnabled) toggleRecording();
 	}
 	if (event.key == 's') toggleKeySounds = !toggleKeySounds;
-=======
-	_keysDown[event.keyCode || event.charCode] = true;
-	if (tassing && event.key == 'h') showingHitboxes = !showingHitboxes;
->>>>>>> 905596fb6f7cbbb696fc6c673d4b7e0e8ba96efa
 	if (editingTextBox >= 0 && event.keyCode) {
 		if (currentTextBoxAllowsLineBreaks && controlOrCommandPress && event.key == 'v') {
 			navigator.clipboard
@@ -11975,55 +11660,13 @@ function setup() {
 }
 
 function draw() {
-<<<<<<< HEAD
 	document.getElementById('total-time').innerHTML = toHMS(
 		timer + (menuScreen == 3 && currentLevel < 52 ? levelTimer / 0.06 : 0)
 	);
-=======
-	document.getElementById("frame").innerHTML = levelTimer
-	if (recordEnabled || (currentLevel >= 0 && currentLevel < tasKeys.length && levelTimer > 0 && levelTimer < tasKeys[currentLevel].length)) {
-		if (recordEnabled?_keysDown[13]:tasKeys[currentLevel][levelTimer].includes(13)) {
-			document.getElementById("key13").setAttribute('class', 'keyDown');
-		} else {
-			document.getElementById("key13").setAttribute('class', 'keyUp');
-		}
-		if (recordEnabled?_keysDown[38]:tasKeys[currentLevel][levelTimer].includes(38)) {
-			document.getElementById("key38").setAttribute('class', 'keyDown');
-		} else {
-			document.getElementById("key38").setAttribute('class', 'keyUp');
-		}	
-		if (recordEnabled?_keysDown[40]:tasKeys[currentLevel][levelTimer].includes(40)) {
-			document.getElementById("key40").setAttribute('class', 'keyDown');
-		} else {
-			document.getElementById("key40").setAttribute('class', 'keyUp');
-		}
-		if (recordEnabled?_keysDown[37]:tasKeys[currentLevel][levelTimer].includes(37)) {
-			document.getElementById("key37").setAttribute('class', 'keyDown');
-		} else {
-			document.getElementById("key37").setAttribute('class', 'keyUp');
-		}
-		if (recordEnabled?_keysDown[39]:tasKeys[currentLevel][levelTimer].includes(39)) {
-			document.getElementById("key39").setAttribute('class', 'keyDown');
-		} else {
-			document.getElementById("key39").setAttribute('class', 'keyUp');
-		}	
-		if (recordEnabled?_keysDown[32]:tasKeys[currentLevel][levelTimer].includes(32)) {
-			document.getElementById("key32").setAttribute('class', 'keyDown');
-		} else {
-			document.getElementById("key32").setAttribute('class', 'keyUp');
-		}
-		if (recordEnabled?_keysDown[90]:tasKeys[currentLevel][levelTimer].includes(90)) {
-			document.getElementById("key90").setAttribute('class', 'keyDown');
-		} else {
-			document.getElementById("key90").setAttribute('class', 'keyUp');
-		}
-	}
->>>>>>> 905596fb6f7cbbb696fc6c673d4b7e0e8ba96efa
 	onButton = false;
 	hoverText = '';
 	onTextBox = false;
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-<<<<<<< HEAD
 	if (menuScreen == 2 || menuScreen == 3) ctx.translate(Math.floor(cameraX + shakeX), Math.floor(cameraY + shakeY));
 	switch (menuScreen) {
 		case -1:
@@ -12143,62 +11786,6 @@ function draw() {
 						// console.log(tasKeys[currentLevel][levelTimer][i]);
 					}
 				}
-=======
-	if (menuScreen == 2 || menuScreen == 3) ctx.translate(Math.floor(cameraX+shakeX), Math.floor(cameraY+shakeY));
-	if (menuScreen == -1) {
-		ctx.drawImage(preMenuBG, 0, 0, cwidth, cheight);
-		ctx.font = 'bold 30px Helvetica';
-		drawMenu0Button('START GAME', (cwidth-menu0ButtonSize.w)/2, (cheight-menu0ButtonSize.h)/2, 0, false, playGame);
-	} else if (menuScreen == 0) {
-		drawMenu();
-	} else if (menuScreen == 2) {
-		drawLevelMap();
-		if (_xmouse < 587 || _ymouse < 469) {
-			if (_ymouse <= 180) {
-				cameraY = Math.min(Math.max(cameraY + (180 - _ymouse) * 0.1,-1080),0);
-			} else if (_ymouse >= 360) {
-				cameraY = Math.min(Math.max(cameraY - (_ymouse - 360) * 0.1,-1080),0);
-			}
-		}
-	} else if (menuScreen == 3) {
-		if (tassing && currentLevel < tasKeys.length) {
-			_keysDown[13] = _keysDown[16] = _keysDown[37] = _keysDown[38] = _keysDown[39] = _keysDown[40] = _keysDown[90] = _keysDown[32] = false;
-			if (levelTimer < tasKeys[currentLevel].length) {
-				for (var i = 0; i < tasKeys[currentLevel][levelTimer].length; i++) {
-					_keysDown[tasKeys[currentLevel][levelTimer][i]] = true;
-					// console.log(tasKeys[currentLevel][levelTimer][i]);
-				}
-			}
-		}
-		if (recordEnabled && !tassing) {
-			keyRecording += ' ';
-			if (_keysDown[13] || _keysDown[16]) keyRecording += 'E';
-			if (_keysDown[32]) keyRecording += 'J';
-			if (_keysDown[37]) keyRecording += 'L';
-			if (_keysDown[38]) keyRecording += 'U';
-			if (_keysDown[39]) keyRecording += 'R';
-			if (_keysDown[40]) keyRecording += 'D';
-			if (_keysDown[90]) keyRecording += 'Z';
-		}
-
-		// TODO: draw the bg to an offscreen canvas when the level is loaded
-		// var bgScale = Math.max(bgXScale, bgYScale);
-		// ctx.drawImage(imgBgs[playMode==2?selectedBg:bgs[currentLevel]], -Math.floor((cameraX+shakeX)/1.5), -Math.floor((cameraY+shakeY)/1.5), (bgScale/100)*cwidth, (bgScale/100)*cheight);
-		ctx.drawImage(osc4, -Math.floor((cameraX+shakeX)/1.5), -Math.floor((cameraY+shakeY)/1.5), osc4.width/pixelRatio, osc4.height/pixelRatio);
-		drawLevel();
-
-		if (cutScene == 1 || cutScene == 2) { 
-			if (_keysDown[13] || _keysDown[16]) {
-				if (!csPress && cutScene == 1) {
-					cutSceneLine++;
-					if (cutSceneLine >= cLevelDialogueChar.length) endCutScene();
-					else displayLine(currentLevel,cutSceneLine);
-				}
-				csPress = true;
-			} else {
-				csPress = false;
-				if (cutScene == 2) cutScene = 3;
->>>>>>> 905596fb6f7cbbb696fc6c673d4b7e0e8ba96efa
 			}
 			if (toggleKeySounds) {
 				if (_keysDown[32] && !p_keysDown[32]) playKeySound(0);
@@ -12842,7 +12429,6 @@ function draw() {
 							hprcBubbleAnimationTimer++;
 						}
 					}
-<<<<<<< HEAD
 					if (char[i].y > levelHeight * 30 + 160 && char[i].charState >= 7) {
 						startDeath(i);
 					}
@@ -12870,48 +12456,6 @@ function draw() {
 								charsAtEnd--;
 							}
 							char[i].atEnd = false;
-=======
-				}
-				if (_loc2_ == control) setCamera();
-			}
-		}
-
-		// This was originally near the start of the level screen code, but I moved it to the end to fix a bug relating to the camera when exiting a level.
-		if (wipeTimer == 30) {
-			if (transitionType == 0) {
-				timer += getTimer() - levelTimer2;
-				resetLevel();
-				keyRecording = '-';
-			} else if (charsAtEnd >= charCount2) {
-				keyRecording += '-';
-				tasString[currentLevel] = keyRecording;
-				parseTASString();
-				if (recordEnabled) exitLevel();
-				tassing = true;
-				recordEnabled = false;
-				if (playMode != 2 && gotThisCoin && !gotCoin[currentLevel]) {
-					gotCoin[currentLevel] = true;
-					coins++;
-					bonusProgress = Math.floor(coins*0.33);
-				}
-				timer += getTimer() - levelTimer2;
-				if (tassing) {
-					console.log(timer/1000 + ',' + levelTimer);
-				}
-				if (playMode == 0 && currentLevel < 99) {
-					currentLevel++;
-					// toSeeCS = true; // this line was absent in the original source, but without it dialog doesn't play after level 1 when on a normal playthrough.
-					toSeeCS = currentLevel == 0;
-					levelProgress = currentLevel;
-					resetLevel();
-				} else {
-					if (playMode == 2) {
-						exitTestLevel();
-					} else {
-						exitLevel();
-						if (currentLevel > 99) {
-							bonusesCleared[currentLevel-100] = true;
->>>>>>> 905596fb6f7cbbb696fc6c673d4b7e0e8ba96efa
 						}
 					}
 					if (i == control) setCamera();
@@ -14209,7 +13753,6 @@ function draw() {
 	pmenuScreen = menuScreen;
 }
 
-<<<<<<< HEAD
 function toggleRecording() {
 	if (recordEnabled) {
 		// Stop recording
@@ -14240,41 +13783,18 @@ function setLevelString() {
 	if (levelId == levelId && levelId >= 0 && levelId < 54) {
 		tasString[levelId] = document.getElementById('inseq-string').value;
 		parseTASString();
-=======
-function beginKeyRecord() {
-	keyRecording = '-';
-	recordEnabled = true;
-	tassing = false;
-	if (menuScreen == 3) {
-		exitLevel();
->>>>>>> 905596fb6f7cbbb696fc6c673d4b7e0e8ba96efa
 	}
 }
 
 // Limits the framerate to 60fps.
 // https://gist.github.com/elundmark/38d3596a883521cb24f5
 // https://stackoverflow.com/questions/19764018/controlling-fps-with-requestanimationframe
-<<<<<<< HEAD
 let fps = 60;
 let now;
 let then = window.performance.now();
 let lastFrameReq = then;
 let interval = 1000 / fps;
 let delta;
-=======
-var fps = 60;
-var now;
-var then = window.performance.now();
-var lastFrameReq = then;
-var interval = 1000/fps;
-var delta;
->>>>>>> 905596fb6f7cbbb696fc6c673d4b7e0e8ba96efa
-
-// for debugging or tassing
-function setfps(newFps) {
-	fps = newFps;
-	interval = 1000/fps;
-}
 
 function rAF60fps() {
 	requestAnimationFrame(rAF60fps);
@@ -14285,16 +13805,11 @@ function rAF60fps() {
 		draw();
 	}
 
-<<<<<<< HEAD
 	// Added this line to fix unnecessary lag sometimes caused by the framerate limiter.
-=======
-	// Added thisline to fix unnecessary lag sometimes caused by the framerate limiter. 
->>>>>>> 905596fb6f7cbbb696fc6c673d4b7e0e8ba96efa
 	if (lastFrameReq - then > interval) then = now;
 	lastFrameReq = now;
 }
 
-<<<<<<< HEAD
 function setFps(newFps) {
 	fps = newFps;
 	then = window.performance.now();
@@ -14438,5 +13953,3 @@ function playKeySound(index) {
 	audioSource.connect(a_ctx.destination);
 	audioSource.start();
 }
-=======
->>>>>>> 905596fb6f7cbbb696fc6c673d4b7e0e8ba96efa
