@@ -6,6 +6,8 @@
 	<meta charset="utf-8"/>
 	<!--<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />-->
 	<link rel="stylesheet" href="style.css" type="text/css"/>
+<<<<<<< HEAD
+=======
 	<style type="text/css">
 		.keyUp {
 			background-color: lightblue;
@@ -19,10 +21,90 @@
 		}
 	</style>
 	<script type="text/javascript" src="Character.js"></script>
+>>>>>>> 905596fb6f7cbbb696fc6c673d4b7e0e8ba96efa
 	<script type="text/javascript" src="5b.js"></script>
 </head>
 <body>
 <div id="center">
+<<<<<<< HEAD
+	<table><tbody><tr>
+		<td rowspan=2>
+			<table class="keypad"><tbody>
+				<tr>
+					<td id="key-Z">Z</td>
+					<td id="key-U">U</td>
+					<td id="key-E">E</td>
+				</tr>
+				<tr>
+					<td id="key-L">L</td>
+					<td id="key-D">D</td>
+					<td id="key-R">R</td>
+				</tr>
+				<tr>
+					<td colspan=3 id="key-J">J</td>
+				</tr>
+			</tbody></table>
+			<div style="width:100%;text-align: center;" id="total-time">00:00:00.0</div>
+			<table class="times"><thead>
+				<tr>
+					<th></th>
+					<th>IL delta</th>
+					<th>frames</th>
+					<th>time</th>
+				</tr>
+			</thead><tbody id="times"></tbody></table>
+		</td><td style="height:540px;line-height: 0;">
+			<canvas width="960" height="540" id="cnv" contenteditable="false"></canvas>
+		</td>
+	</tr><tr>
+		<td id="control-panel">
+			<div id="speed-controls">
+				<h3>Frame Rate</h3>
+				<ul class="horizontal-list">
+					<li><button id="0fps" onclick="setFps(0)">0</button></li><!--
+					--><li><button id="1fps" onclick="setFps(1)">1</button></li><!--
+					--><li><button id="5fps" onclick="setFps(5)">5</button></li><!--
+					--><li><button id="10fps" onclick="setFps(10)">10</button></li><!--
+					--><li><button id="15fps" onclick="setFps(15)">15</button></li><!--
+					--><li><button id="30fps" onclick="setFps(30)">30</button></li><!--
+					--><li><button id="45fps" onclick="setFps(45)">45</button></li><!--
+					--><li><button id="60fps" onclick="setFps(60)">60</button></li>
+				</ul>
+				<button id="frame-advance" onclick="draw()">next frame</button>
+			</div>
+			<div id="recording-controls">
+				<h3>Recording</h3>
+				<button id="toggle-recording" onclick="toggleRecording()">record</button>
+				<!-- <button id="toggle-recording" onclick="toggleRecording()">record</button> -->
+			</div>
+			<div id="input-sequences">
+				<h3>Input Sequences</h3>
+				<div style="width:max-content;margin:auto;">
+					<label style="text-align:left;display:inline-block;width:100%;">
+						Level
+						<input type="number" id="inseq-level" name="inseq-level" min="1" max="53">
+					</label><br>
+					<button id="copy-string" onclick="copyLevelString()">copy string</button>
+					<button id="set-string" onclick="setLevelString()">set string</button>
+				</div>
+					<textarea id="inseq-string" name="inseq-string" rows="2" cols="22"></textarea>
+			</div>
+			<div id="options">
+				<h3>Options</h3>
+				<div style="text-align: left;">
+					<label>
+						<input type="checkbox" checked="true" name="level-transitions">
+						Level transitions
+					</label><br>
+					<label>
+						<input type="checkbox" checked="true" name="show-hitboxes">
+						Show hitboxes [H]
+					</label><br>
+				</div>
+			</div>
+		</td>
+	</tr></tbody></table>
+=======
 	<canvas width="960" height="540" id="cnv" contenteditable="false"></canvas>
 	<table style="width:120px">
 		<tr>
@@ -49,6 +131,7 @@
 	<p id="frame"></p> 
 	<p> <input id="levelnmr" type="number"/> <input id="levelstr" type="string"/> <button onclick='tasString[document.getElementById("levelnmr").value - 1] = document.getElementById("levelstr").value; parseTASString();'> Change String </button> </p>
 	<p> <input id="levelnmr2" type="number"/> <button onclick='document.getElementById("stringset").innerHTML = tasString[document.getElementById("levelnmr2").value - 1];'> Get String </button> - <span id="stringset">No string currently</span></p>
+>>>>>>> 905596fb6f7cbbb696fc6c673d4b7e0e8ba96efa
 </div>
 </body>
 </html>

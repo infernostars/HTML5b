@@ -2,7 +2,7 @@
 * {
 	font-family: Helvetica, Arial, sans-serif;
 	text-align: center;
-	color:#666;
+	/*color:#666;*/
 	margin:0;
 	padding:0;
 }
@@ -14,7 +14,7 @@ a{
 	transition: 0.5s ease;
 }
 a:hover{
-	color: #666;
+	/*color: #666;*/
 	-webkit-transition: 0.2s ease;  
 	-moz-transition: 0.2s ease;  
 	-o-transition: 0.2s ease;  
@@ -26,7 +26,7 @@ html{
 }
 body{
 	height:100%;
-	width:960px;
+	width:1200px;
 	margin:0 auto 0 auto;
 	min-height:600px;
 	position:relative;
@@ -34,17 +34,173 @@ body{
 p{
 	margin:0 0 0.7em;
 }
+table{
+	border-collapse: collapse;
+}
+td{
+	vertical-align: top;
+}
+.keypad, .times {
+	width: 240px;
+}
+.times tbody {
+	display:block;
+	width: 100%;
+	overflow: auto;
+	/*overflow: hidden;*/
+	height: 517.5px;
+}
+.times thead tr {
+	display: block;
+	border-top: 1px white solid;
+	border-bottom: 1px white solid;
+}
+.times {
+	background: black;
+	color: white;
+}
+.times tbody {
+	font-size: 11pt;
+}
+.times :is(th,td) {
+	padding: 5px 0;
+	width: 80px;
+}
+.times td {
+	padding: 7px 0;
+}
+.times :is(th,td):first-child {
+	padding-left: 7px;
+	width: 25px;
+}
+.times td:nth-child(2) {
+	color: #0d2;
+}
+.times td:nth-child(2).red {
+	color: #d00;
+}
+.times td:nth-child(n+3) {
+	font-weight: bold;
+}
+.times tbody tr:nth-child(2n) {
+	background-color: #200b0b;
+	border-top: 1px #351212 solid;
+	border-bottom: 1px #351212 solid;
+}
+#total-time{
+	font-size: 24pt;
+	height: 35px;
+	padding-top: 4px;
+	background: black;
+	color: white;
+}
+.keypad {
+	height: 90px;
+	/*background-color: #122139;*/
+}
+.keypad td {
+	height: 30px;
+	background-color: #4377CE;
+	vertical-align: middle;
+	color: white;
+	transition: background-color 0.03s;
+}
+.keypad td.pressed {
+	background-color: #184896;
+	/*position: relative;
+	top: 3px;
+	height: 27px;*/
+	font-weight: bold;
+	transition: none;
+	height: 30px;
+	box-sizing: border-box;
+	box-shadow: inset 0px 3px 0px 0px #103062;
+	padding-top: 3px;
+}
 #center{
 	position:absolute;
 	top:40%;
 	margin-top:-255px;
 }
 /* https://stackoverflow.com/questions/2310734/how-to-make-html-text-unselectable */
-.unselectable {
+/*.unselectable {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+}*/
+
+#control-panel {
+	background: #FCCB68;
+	padding: 10px;
+	text-align: left;
+}
+#control-panel > div {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 25px;
+}
+#control-panel h3 {
+	margin-bottom: 3px;
+}
+#control-panel button {
+	padding: 1px 5px;
+	font-size: 12pt;
+	border-radius: 10px;
+	border: dimgray 1.5px solid;
+	margin-bottom: 3px;
+}
+#control-panel input {
+	margin-bottom: 3px;
+}
+
+#speed-controls {
+	width: fit-content;
+}
+#speed-controls ul li:first-child button {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	border-right: none;
+	padding-right: 3px;
+}
+#speed-controls ul li:last-child button {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	padding-left: 3px;
+}
+#speed-controls ul li:not(:first-child,:last-child) button {
+	border-radius: 0;
+	border-right: none;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+#inseq-level {
+	width: 45px;
+	border: dimgray 1.5px solid;
+	border-radius: 5px;
+	padding: 1px 5px 1px 0;
+	font-size: 12pt;
+}
+#inseq-string {
+	border: dimgray 1.5px solid;
+	border-radius: 5px;
+	padding: 1px 5px;
+	font-size: 12pt;
+	text-align: left;
+	resize: none;
+	font-family: monospace;
+}
+
+#options {
+	float: right;
+}
+
+ul.horizontal-list {
+	list-style: none;
+}
+ul.horizontal-list li {
+	display: inline-block;
 }
