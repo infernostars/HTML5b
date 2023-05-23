@@ -2456,14 +2456,24 @@ async function loadingScreen() {
 
 window.onload = function () {
 	// Checkboxes should start being checked as soon as the page loads.
-	document.querySelector("input[name=level-transitions]").addEventListener('change', function() {
+	document.querySelector('input[name=level-transitions]').addEventListener('change', function() {
 		if (this.checked) showLevelTransitions = true;
 		else showLevelTransitions = false;
 	});
-	document.querySelector("input[name=show-hitboxes]").addEventListener('change', function() {
+	if (document.querySelector('input[name=level-transitions]').checked)showLevelTransitions = true;
+	else showLevelTransitions = false;
+	document.querySelector('input[name=show-hitboxes]').addEventListener('change', function() {
 		if (this.checked) showingHitboxes = true;
 		else showingHitboxes = false;
 	});
+	if (document.querySelector('input[name=show-hitboxes]').checked) showingHitboxes = true;
+	else showingHitboxes = false;
+	document.querySelector('input[name=play-keysounds]').addEventListener('change', function() {
+		if (this.checked) toggleKeySounds = true;
+		else toggleKeySounds = false;
+	});
+	if (document.querySelector('input[name=play-keysounds]').checked) toggleKeySounds = true;
+	else toggleKeySounds = false;
 
 	loadingScreen();
 };
@@ -7211,13 +7221,13 @@ function keydown(event) {
 	_userKeysDown[event.keyCode || event.charCode] = true;
 	if (event.key == 'h') {
 		// showingHitboxes = !showingHitboxes;
-		document.querySelector("input[name=show-hitboxes]").click();
+		document.querySelector('input[name=show-hitboxes]').click();
 	}
 	if (event.key == 't') {
 		tassing = !tassing;
 		if (tassing && recordEnabled) toggleRecording();
 	}
-	if (event.key == 's') toggleKeySounds = !toggleKeySounds;
+	if (event.key == 's') document.querySelector('input[name=play-keysounds]').click();
 	if (editingTextBox >= 0 && event.keyCode) {
 		if (currentTextBoxAllowsLineBreaks && controlOrCommandPress && event.key == 'v') {
 			navigator.clipboard
