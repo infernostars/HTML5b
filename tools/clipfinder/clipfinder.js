@@ -27,17 +27,17 @@ x,151.3883509386117,-0.5440429606646128
 //293
 //323
 const charId = 3;
-let startX = 114.05321721291074;
-let startVel = 0;
-const targetX = 200;
+let startX = 708.9991079701917;
+let startVel = -3.999776992548016;
+const targetX = 697;
 const checkPos = true;
 const checkVel = true;
-const base = 6; // 3 for no z presses, 6 for z presses included
+const base = 3; // 3 for no z presses, 6 for z presses included
 // const head = [1,2,2,2,2,2,2,2,2,2,2,2,2,2];
 // const tail = [1,0,0,2,0,0,2,1,3,2,2,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 // const head = [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2];
-const head = [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2];
-const tail = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+const head = [];
+const tail = [];
 let isControl = true;
 const isonob = false;
 
@@ -122,7 +122,7 @@ function main() {
 	postHeadIsControl = isControl;
 	postHeadQPress = qPress;
 
-	for (var j = 0; j < 1000000; j++) {
+	for (var j = 0; j < 100000; j++) {
 		keyPattern = [...Array.from(j.toString(base), Number), ...tail];
 		initChar();
 		for (var i = 0; i < keyPattern.length; i++) {

@@ -54,6 +54,7 @@
 					--><li><button id="60fps" onclick="setFps(60)">60</button></li>
 				</ul>
 				<button id="frame-advance" onclick="draw()">next frame</button>
+				<button id="frame-advance" onclick="toggleNoLag()">no lag</button>
 			</div>
 			<div id="recording-controls">
 				<h3>Recording</h3>
@@ -84,8 +85,16 @@
 						Show hitboxes [H]
 					</label><br>
 					<label>
+						<input type="checkbox" checked="true" name="show-grabboxes">
+						Show grabboxes [G]
+					</label><br>
+					<label>
 						<input type="checkbox" name="play-keysounds">
 						Play key sounds [S]
+					</label><br>
+					<label>
+						<input type="checkbox" checked="true" name="enable-tints">
+						Enable slow tints
 					</label>
 				</div>
 			</div>
