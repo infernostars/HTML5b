@@ -445,6 +445,9 @@ function loadLevels() {
 			levelName[i] += charAt2(lineLength);
 		}
 
+		// Temporary crash fix for chrome devices on version 117+
+		console.log(levelsString);
+
 		// Read Level Metadata
 		levelStart += lineLength;
 		levelWidth = 10 * charAt(2) + charAt(3);
