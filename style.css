@@ -136,6 +136,8 @@ td{
 	background: #FCCB68;
 	padding: 10px;
 	text-align: left;
+	height: 115px;
+	display: block;
 }
 #control-panel > div {
 	display: inline-block;
@@ -188,7 +190,7 @@ td{
 	border: dimgray 1.5px solid;
 	border-radius: 5px;
 	padding: 1px 5px;
-	font-size: 12pt;
+	font-size: 8pt;
 	text-align: left;
 	resize: none;
 	font-family: monospace;

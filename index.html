@@ -51,7 +51,9 @@
 					--><li><button id="15fps" onclick="setFps(15)">15</button></li><!--
 					--><li><button id="30fps" onclick="setFps(30)">30</button></li><!--
 					--><li><button id="45fps" onclick="setFps(45)">45</button></li><!--
-					--><li><button id="60fps" onclick="setFps(60)">60</button></li>
+					--><li><button id="60fps" onclick="setFps(60)">60</button></li><!--
+					--><li><button id="120fps" onclick="setFps(120)">2x</button></li><!--
+					--><li><button id="240fps" onclick="setFps(240)">4x</button></li>
 				</ul>
 				<button id="frame-advance" onclick="draw()">next frame</button>
 				<button id="frame-advance" onclick="toggleNoLag()">no lag</button>
@@ -71,7 +73,7 @@
 					<button id="copy-string" onclick="copyLevelString()">copy string</button>
 					<button id="set-string" onclick="setLevelString()">set string</button>
 				</div>
-					<textarea id="inseq-string" name="inseq-string" rows="2" cols="22"></textarea>
+					<textarea id="inseq-string" name="inseq-string" rows="10" cols="30"></textarea>
 			</div>
 			<div id="options">
 				<h3>Options</h3>
@@ -93,7 +95,7 @@
 						Play key sounds [S]
 					</label><br>
 					<label>
-						<input type="checkbox" checked="true" name="enable-tints">
+						<input type="checkbox" checked="false" name="enable-tints">
 						Enable slow tints
 					</label>
 				</div>
