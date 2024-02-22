@@ -103,7 +103,7 @@ td{
 	background-color: #4377CE;
 	vertical-align: middle;
 	color: white;
-	transition: background-color 0.03s;
+	transition: background-color 0.2s;
 }
 .keypad td.pressed {
 	background-color: #184896;
