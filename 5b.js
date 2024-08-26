@@ -89,7 +89,7 @@ const tasStringAnyP = [
     // 012
     'R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R L L L L L L L L L L RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
     // 013
-    'R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R J - - - - - - - - - - - - - - - - - - - - - - - - - - - - - J - - - - - - - - - - - - - - - - - - - - - R R R R R R R R RJ R R R R R R R R R - L L L L LU L L L L L L L L L L L L - R R R R R R RJD R R R R R R R R R R R R RU R R R R R R R R R R - U R R R - L L L L L - U R R R RJ R R R R R R R R R R RU R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
+    'R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R J - - - - - - - - - - - - - - - - - - - - - - - - - - - - - J - - - - - - - - - - - - - - - - - - - - - R R R R R R R R RJ R R R R R R R R R - L L L L LU L L L L L L L L L L L L - R R R R R R RJD R R R R R R R R R R R R RU R R R R R R R R R - - - - - - - - - U R R L U R RJ R R R R R R R R RU R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
     // 014
     '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L - - - - - - - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R R L L L - - - - - - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R L L L LJ L L L L L L L L L L L - R R R R R R R R R R R J - R R R R R R R R R R R R R R R R R R R R R R R -',
     // 015
@@ -167,12 +167,13 @@ const tasStringAnyP = [
     // 051
     'RZ L LJ U R R R RU R RU R RUZ R RZ RU R RU R R R RZ RU R RU R RU R RUZ R RZ RU R RU R R RZ RU R RU L LU RZ R RZ RU R RU RZ RU R RUZ R RZ RU R RU RZ RU RZ - L R R R R R R R R R R R R R R R R R R R R RJ RZ RU RZ U Z R RZ U Z RU RZ R RZ RU R RU RZ RU R RUZ R RZ RU R RU RZ RU LZ R R R R R R R R R R R R R R R R R -',
     // 052
-    'U - UJ L L L U R R RZ RU R RUZ R RZ RU R RU RZ RU R RU R RZ R R RZ RU R RU R RU R RU RZ RU R RU RZ R R RZ RU R RU R RU R RU RZ RU R R R R R R R R R R R R R R R R RZ RJ RZ RU R RU RZ RU RZ R R R R R R R R R R RZ RU RZ RU RZ R RZ RU R R R R R RZ RU R R R R RUZ RJ R RZ RU R U - RU R RU RZ RU R RU Z R RZ RU R RU R RU R RU RZ RU R RU Z R R RZ RU R U - RU R RU RZ RU R RU RZ R R RZ RU R RU R RU R RU RZ RU R RU RZ R RZ RU R RU R RU R RU RZ RU R RU RZ R RZ RU R RU R RU R RU RZ RU R RU RZ R RZ RU R RU R RU R RU RZ RU R RU RZ R RZ RU R RU R RU R RU RZ RU R RU RZ R RZ RU R RU R RU R RU R R R R - L L L L L L L RZ - Z L L LZ R RZ LJ - - R - - R L R R R R R R R RU R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R - L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R R R R R R R R R R R R R - L L L L L L L L L LD L L L L L L L L L L L L L L L L R R R R R R R R R R R R R RU R RD R R R R R R R R R R R R R R R R R R R L L L L L L L L L L L LU L LD L LZ - R R L R R R R R R R R R R R R R R R R R R R R R R R RZ R R R R R RU R R L R R R R R R R RD R R RU RD R R R RU RZ R RU RDZ - Z RU RD - - R R R R R R R R R RU R R -',
+    'U - UJ L L L U R R RZ RU R RUZ R RZ RU R RU RZ RU R RU R RZ R R RZ RU R RU R RU R RU RZ RU R RU RZ R R RZ RU R RU R RU R RU RZ RU R R R R R R R R R R R R R R R R RZ RJ RZ RU R RU RZ RU RZ R R R R R R R R R R RZ RU RZ RU RZ R RZ RU R R R R RZ RU RJ RZ R RZ RU RZ RU RZ R RZ RU RZ RU R RUZ RJ RZ RU R RU R LU R R RU RZ RU R RU R LU R R RU RZ R R RZ RU R RU R RU R RU RZ RU R RU RZ R R RZ RU R RU R RU R RU RZ RU R RU RZ R RZ RU R RU R RU R RU RZ RU R RU RZ R RZ RU R RU R RU R RU RZ RU R RU RZ R RZ RU R RU R RU R RU RZ RU R RU RZ R RZ RU R RU R RU R RU RZ RU R RU RZ R RZ RU R RU R RU R RUZ R RZ R Z L L L L L L L - R RZ R LJ - - R - - R L R R R R R R R RU R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R - L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R R R R R R R R R R R R R - L L L L L L L L L LD L L L L L L L L L L L L L L L L R R R R R R R R R R R R R RU R RD R R R R R R R R R R R R R R R R R R R L L L L L L L L L L L LU L LD L LZ - R R L R R R R R R R R R R R R R R R R R R R R R R R RZ R R R R R R R R R RU R R L R R R R R R R RD R R RU RD R R R RU RZ R RU RDZ - Z RU RD - - R R R R R R R R R RU R R -',
     // 053
-    'RZ L L L L L L L LJ - U R R R RU R RU R RUZ R RZ RU R RU R R R RZ RU R RU R RU R RUZ R RZ RU R RU R RZ RU R RU R RU R RUZ R RZ RU R RU R RZ RU R RU R RU R RUZ R RZ RU R RU RZ RU R RUZ R RZ RU R RU RZ RU R RUZ R RZ RU R RU RZ RU Z R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
+    'RZ L L L L L L L LJ - U R R R RU R RU R RUZ R RZ RU R RU R R R RZ RU R RU R RU R RUZ R RZ RU R RU R RZ RU R RU R RU R RUZ R RZ RU R RU R RZ RU R RU R RU R RUZ R RZ RU R RU RZ RU R RUZ R RZ RU R RU RZ RU R RUZ R RZ RU R RU RZ RU Z R R R R R R R R R R R R R R RJ RZ R R R R RZ L L LU R R RD R RU R -',
     '',
     ''
 ];
+
 let tasString100P = [
     // 001
     'R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R E - E - E - E - E - E - R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R - L L L L LJ L L L L L L L L L L L L L L L L L L L L L -',
@@ -232,7 +233,7 @@ let tasString100P = [
     // 'R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R J - - - - - - - - - - - - - - - - - - - - - - - - - - - - - J - - - - - - - - - - - - - - - - - - - - - R R R R R R R R RJ R R R R R R R R R - L L L L LU L L L L L L L L L L L L - R R R R R R RJD R R R R R R R R R R R R RU R R R R R R R R R R - U R R R - L L L L L - U R R R RJ R R R R R R R R R R RU R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
     // 'R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R J - - - - - - - - - - - - - - - - - - - - - - - - - - - - - J - - - - - - - - - - - - - - - - - - - - - R R R R R R R R RJ R R R R R R R R R R R R R R R R RU R - - - - - - - - - - - U L L L L L L L L L LJ L L L L L L L L L L L L L L L L L - - - - - - - - - - - - J - - - - - - - - - - - - - - - - - - - - - R R R R R R R R RJ R R R R R - L L L L L L L L LU L L L L L L L L L L L L LU L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L - R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
     // 'R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R J - - - - - - - - - - - - - - - - - - - - - - - - - - - - - J - - - - - - - - - - - - - - - - - - - - - R R R R R R R R RJ R R R R R R R R R R R R R R R R RU R - - - - - - - - - - - U L L L L L L L L L LJ L L L L L L L L L L L L L L L L L - - - - - - - - - - - - J - - - - - - - - - - - - - - - - - - - - - R R R R R R R R RJ R R R R R - L L L L L L L L LU L L L L L L L L LU L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L - R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R LU R R R R R R R R R R R R RJ RU R R R R R R R R R R R R R R R RU R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R RU R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
-    'R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R J - - - - - - - - - - - - - - - - - - - - - - - - - - - - - J - - - - - - - - - - - - - - - - - - - - - - - - - R R R R RJ R R R R R R R R R R R - U L L L L L L L L L L L L L L - R RU RJ R R R R R R R R L L L L L L LU L L L L L L L L LU L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L - - R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R LU R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RU R RU R RUJ R R R R R R RU R R R R R R R RU R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
+    'R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R J - - - - - - - - - - - - - - - - - - - - - - - - - - - - - J - - - - - - - - - - - - - - - - - - - - - - - - - R R R R RJ R R R R R R R R R R R - U L L L L L L L L L L L L L L - R RU RJ R R R R R R R R L L L L L L LU L L L L L L L L LU L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L LJ L L L L L L L L L L L L L L L L L L - - R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R LU R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RU R RU RJ RU R R R R R R R R RU R R R R R R RU R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
     // 014
     // '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L - - - - - - - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R R L L L - - - - - - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R L L L LJ L L L L L L L L L L L - R R R R R R R R R R R J - R R R R R R R R R R R R R R R R R R R R R R R -',
     '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L - - - - - - - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R R L L L - - - - - - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R L L L LJ L L L L L L L L L L L - R R R R R R R R R R R J - R R R R R R R R R R R R R R L L L L L L L L LJ L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L L R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R L L L - - - - - - - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R R L L L - - - - - - - - - - - - - - - - - - - - - R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R RJ R R R R R R R R R R R R R R R R R R R R R R R R R R L L L LJ L L L L L L L L L L L - R R R R R R R R R R R J - R R R R R R R R R R R R R R R R R R R R R R R -',
@@ -465,6 +466,7 @@ let tasString100P = [
     'RZ L L L L L L L L - U R R R RU R RU R RUZ R RZ RU R RU R R R RZ RU R RU R RU R RUZ R RZ RU R RU R RZ RU R RU R RU R RUZ R RZ RU R RU R RZ RU R RU R RU R RUZ R RZ RU RD R R RU R RU RZ RU R RUZ R RZ RU R RU RZ RU R RUZ R RZ RU R RU RZ RU LZ R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R -',
     ''
 ];
+
 
 
 let tasString = tasStringAnyP;
@@ -2584,6 +2586,10 @@ function getVB(base64) {
 	return svg.getAttribute('viewBox').split(' ').map(Number);
 }
 
+function getPixelRatio(quality) {
+	return 2**(Math.round(Math.log2(window.devicePixelRatio))+quality)
+}
+
 async function loadingScreen() {
 	// Zoom fix on Windows.
 	// https://danreynolds.ca/tech/2017/10/15/Variable-Browser-Zoom/
@@ -2593,14 +2599,14 @@ async function loadingScreen() {
 	// by default on Firefox, and on Chrome and Safari it's an empty string by default.
 	// So we'll only want to try rescaling if document.body.style.zoom is
 	// an empty string when the page is loaded.
-	pixelRatio = window.devicePixelRatio;
-	if (document.body.style.zoom === '') {
-		if (pixelRatio > 1 && pixelRatio < 2) {
-			addedZoom = pixelRatio;
-			document.body.style.zoom = `${(1 / pixelRatio) * 100}%`;
-			pixelRatio = window.devicePixelRatio;
-		}
-	}
+	pixelRatio = getPixelRatio(0);
+	// if (document.body.style.zoom === '') {
+	// 	if (pixelRatio > 1 && pixelRatio < 2) {
+	// 		addedZoom = pixelRatio;
+	// 		document.body.style.zoom = `${(1 / pixelRatio) * 100}%`;
+	// 		pixelRatio = window.devicePixelRatio;
+	// 	}
+	// }
 
 	// Initialize Canvas Stuff
 	canvas = document.getElementById('cnv');
@@ -2848,9 +2854,9 @@ function toggleSound() {
 function setQual() {
 	highQual = !highQual;
 	if (highQual) {
-		pixelRatio = window.devicePixelRatio;
+		pixelRatio = getPixelRatio(0);
 	} else {
-		pixelRatio = window.devicePixelRatio / 2;
+		pixelRatio = getPixelRatio(-1);
 	}
 	canvas.width = cwidth * pixelRatio;
 	canvas.height = cheight * pixelRatio;
@@ -7547,6 +7553,11 @@ function mouseup(event) {
 
 function keydown(event) {
 	if (document.activeElement.localName == 'textarea') return;
+	if (event.key == ' ' ||
+		event.key == 'ArrowUp' ||
+		event.key == 'ArrowDown' ||
+		event.key == 'ArrowLeft' ||
+		event.key == 'ArrowRight') event.preventDefault();
 
 	_userKeysDown[event.keyCode || event.charCode] = true;
 	if (event.key == 'h') {
