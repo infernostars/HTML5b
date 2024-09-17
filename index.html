@@ -60,7 +60,8 @@
 			</div>
 			<div id="recording-controls">
 				<h3>Recording</h3>
-				<button id="toggle-recording" onclick="toggleRecording()">record</button>
+				<button id="toggle-recording" onclick="toggleRecording()">record</button><br>
+				<button id="copy-record-string" onclick="copyRecordString()">copy partial string</button>
 				<!-- <button id="toggle-recording" onclick="toggleRecording()">record</button> -->
 			</div>
 			<div id="input-sequences">
@@ -70,8 +71,8 @@
 						Level
 						<input type="number" id="inseq-level" name="inseq-level" min="1" max="53">
 					</label><br>
-					<button id="copy-string" onclick="copyLevelString()">copy string</button>
-					<button id="set-string" onclick="setLevelString()">set string</button>
+					<button id="copy-string" onclick="copyTASLevelString()">copy string</button>
+					<button id="set-string" onclick="setTASLevelString()">set string</button>
 				</div>
 					<textarea id="inseq-string" name="inseq-string" rows="10" cols="30"></textarea>
 			</div>

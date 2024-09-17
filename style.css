@@ -137,12 +137,13 @@ td{
 	padding: 10px;
 	text-align: left;
 	height: 115px;
-	display: block;
+	display: flex;
 }
 #control-panel > div {
 	display: inline-block;
 	vertical-align: top;
-	margin: 0 25px;
+	/*	margin: 0 25px;*/
+	flex-grow: 4;
 }
 #control-panel h3 {
 	margin-bottom: 3px;

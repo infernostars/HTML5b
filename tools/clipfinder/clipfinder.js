@@ -1,15 +1,15 @@
 const charId = 1;
-let startX = 407.95961405384395;
-let startVel = 4.650096486539004;
-const targetX = 457;
+let startX = 360;
+let startVel = 0;
+const targetX = 380;
 const checkPos = true;
 const checkVel = false;
-const base = 3; // 3 for no z presses, 6 for z presses included
-const steps = 1000000; // 100000000000 10000000000
-const stepSize = 1; //2499968 172999 14054 14554
+const base = 6; // 3 for no z presses, 6 for z presses included
+const steps = 100000000; // 100000000000 10000000000
+const stepSize = 79; //2499968 172999 14054 14554
 const start = Math.floor(Math.random()*stepSize);
-const head = [2,2,2,2,2,2,2,2,2]; // [1,1,1] [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-const tail = []; // [0,0,0,0,0] [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+const head = []; // [1,1,1] [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+const tail = [3]; // [0,0,0,0,0] [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 let isControl = true;
 const isonob = false;
 
@@ -96,8 +96,20 @@ function main() {
 
 	for (var j = start; j < steps; j+=stepSize) {
 		keyPattern = [...Array.from(j.toString(base), Number).reverse(), ...tail];
+		// if (base > 3) {
+		// 	let isValid = true;
+		// 	for (var i = 0; i < keyPattern.length-1; i++) {
+		// 		if (keyPattern[i] >= 3 && keyPattern[i+1] >= 3) {
+		// 			isValid = false;
+		// 			break;
+		// 		}
+		// 	}
+		// 	if (!isValid) continue;
+		// }
 		initChar();
 		for (var i = 0; i < keyPattern.length; i++) {
+			if (i == keyPattern.length-2) onob = true;
+			else onob = false;
 			simulateFrame(keyPattern[i]);
 		}
 		// if ((char.x + 30) % 30 < 0.01) {
