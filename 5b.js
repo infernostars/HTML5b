@@ -2357,6 +2357,8 @@ let csPress = false;
 let downPress = false;
 let leftPress = false;
 let rightPress = false;
+let zoomInPress = false;
+let zoomOutPress = false;
 let recover = false;
 let recover2 = 0;
 let recoverTimer = 0;
@@ -2383,6 +2385,9 @@ let cameraX = 0;
 let cameraY = 0;
 let shakeX = 0;
 let shakeY = 0;
+let cameraYOffset = 0;
+let cameraXOffset = 0;
+let cameraZoom = 1;
 let menuScreen = -1;
 let pmenuScreen = -1;
 let exploreTab = 0;
@@ -2480,6 +2485,10 @@ function toHMS(i) {
 // I missed processing's map() function so much I wrote my own that I think I stole parts of from stackoverflow, but didn't link to.
 function mapRange(value, min1, max1, min2, max2) {
 	return min2 + ((value - min1) / (max1 - min1)) * (max2 - min2);
+}
+
+function clamp(num, min, max) {
+	return Math.min(Math.max(num, min), max);
 }
 
 let imgBgs = new Array(12);
@@ -3642,23 +3651,25 @@ function drawLevel() {
 		addTileMovieClip(tileDepths[3][j].x, tileDepths[3][j].y, ctx);
 	}
 
-	// Grid
+	// Draw Grid
 	if (showingGrid) {
 		ctx.strokeStyle = whiteGrid?'#fff':'#000';
 		ctx.lineWidth = 1;
 		ctx.globalAlpha = 0.25;
+		let offsetCameraX = cameraX - cameraXOffset;
+		let offsetCameraY = cameraY - cameraYOffset;
 		for (var i = 0; i <= 960/30; i++) {
 			ctx.beginPath();
-			let x = i*30 - cameraX%30 + cameraX;
-			ctx.moveTo(x, cameraY);
-			ctx.lineTo(x, 540+cameraY);
+			let x = i*30 - offsetCameraX%30 + offsetCameraX;
+			ctx.moveTo(x, offsetCameraY);
+			ctx.lineTo(x, 540+offsetCameraY);
 			ctx.stroke();
 		}
 		for (var i = 0; i <= 540/30; i++) {
 			ctx.beginPath();
-			let y = i*30 - cameraY%30 + cameraY;
-			ctx.moveTo(cameraX, y);
-			ctx.lineTo(960+cameraX, y);
+			let y = i*30 - offsetCameraY%30 + offsetCameraY;
+			ctx.moveTo(offsetCameraX, y);
+			ctx.lineTo(960+offsetCameraX, y);
 			ctx.stroke();
 		}
 		ctx.globalAlpha = 1;
@@ -5287,7 +5298,7 @@ function fallOff(i) {
 		char[char[i].standingOn].stoodOnBy.pop();
 		char[i].standingOn = -1;
 		char[i].onob = false;
-		for (let j; j < char[i].stoodOnBy.length; j++) {
+		for (let j = 0; j < char[i].stoodOnBy.length; j++) {
 			fallOff(char[i].stoodOnBy[j]);
 		}
 	}
@@ -7726,7 +7737,10 @@ function draw() {
 	hoverText = '';
 	onTextBox = false;
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	if (menuScreen == 2 || menuScreen == 3) ctx.translate(Math.floor(cameraX + shakeX), Math.floor(cameraY + shakeY));
+	if (menuScreen == 3) {
+		ctx.scale(cameraZoom, cameraZoom);
+		ctx.translate(Math.floor(cameraX + shakeX + cameraXOffset), Math.floor(cameraY + shakeY + cameraYOffset));
+	} else if (menuScreen == 2) ctx.translate(0, Math.floor(cameraY));
 	switch (menuScreen) {
 		case -1:
 			ctx.drawImage(preMenuBG, 0, 0, cwidth, cheight);
@@ -8551,6 +8565,35 @@ function draw() {
 				shakeY = -cameraY * 2;
 			}
 			levelTimer++;
+
+
+			if (_userKeysDown[80] && mouseIsDown) {
+				if (!pmouseIsDown) {
+					valueAtClick = [cameraXOffset, cameraYOffset];
+				}
+				cameraXOffset = valueAtClick[0] + (_xmouse - lastClickX);
+				cameraYOffset = valueAtClick[1] + (_ymouse - lastClickY);
+			}
+			if (_userKeysDown[79]) {
+				cameraXOffset = 0;
+				cameraYOffset = 0;
+			}
+			const compensatePan = (direction) => {
+				cameraXOffset += direction
+			}
+			if (_userKeysDown[173]) {
+				if(!zoomOutPress) {
+					cameraZoom = clamp(cameraZoom/2, 1, 4);
+					zoomOutPress = true;
+				}
+			} else zoomOutPress = false;
+			if (_userKeysDown[61]) {
+				if(!zoomInPress) {
+					cameraZoom = clamp(cameraZoom*2, 1, 4);
+					zoomInPress = true;
+				}
+			} else zoomInPress = false;
+			if (_userKeysDown[48]) cameraZoom = 1;
 			break;
 
 		case 5:
